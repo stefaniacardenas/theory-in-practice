@@ -138,7 +138,7 @@ function logName() {
       console.log('### This example uses `let`')
       // trying to do this, will return an error
       console.log('Trying to print an existing variable re-declared in function scope, will return', name);
-      // this is way in ES6 favours the use of `const` and `let` instead of `var`
+      // this is why ES6 favours the use of `const` and `let` instead of `var`
       // Nonetheless, it's important to know how `var` works comapred to the new ES6 syntax
       let name = 'Lucy';
     }
