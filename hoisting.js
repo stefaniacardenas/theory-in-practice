@@ -40,24 +40,17 @@ catch(error) {
 // Hoisting and functions
 // Function hoisting works in the same way.
 // In JavaScript if you declare a function using `var` or `const`, that's called a function expression
-// Function expressions also get hoisted, it means that the function name
-// will be lifted to the top of the scope as a variable with no value
+// Function expressions with `var` also get hoisted, that the function name
+// will be lifted to the top of the scope as a variable with no value.
+// Spoiler: It won't work with `const`
 
 try {
   // At this point addNumbers is just a variable and it's undefined. It's not a function yet.
   // So this will throw an error
-  console.log('Trying to run a function expression before its declaration', addNumbers(2,2))
+  console.log('Calling a `var` function expression before its declaration', addNumbers(2,2))
 }
 catch(error) {
-  console.log(error.message)
-}
-
-try {
-  // Same here.
-  // This will throw an error
-  console.log('Trying to run a function expression before its declaration', getProduct(4,4))
-}
-catch(error) {
+  //addNumbers is not a function
   console.log(error.message)
 }
 
@@ -67,8 +60,36 @@ var addNumbers = function(num1, num2) {
   return num1 + num2
 }
 
-// this will go to the top of the scope as:
+//Function expression with `const` - Hoisting won't work
+
+try {
+  // This will throw an error
+  console.log('Calling a `const` function expression before its declaration', getProduct(4,4))
+}
+catch(error) {
+  // Note! The error is different here
+  // getProduct is not defined
+  // This is because as said earlier hoisting does not work with `const`
+  console.log(error.message)
+}
+
+// this won't be hoisted because you can't just declare a const variable like this
 // const getProduct;
+// If you tried that you would get a `Missing initializer in const declaration` error
 const getProduct = (num1, num2) => {
   return num1 * num2
 }
+
+// Function declarations
+// This is a function declaration
+
+console.log('I can print a function declaration before. This is the result:', difference(100, 50))
+
+// In this case the whole function is hoisted at the top of the scope
+function difference(num1, num2) {
+  return num1 - num2
+}
+
+// Remember: if you declare a variable inside a function, that variable will be
+// hoisted at the top of the function, not at the top of the global scope!
+// This is because of function scoping in JavaScript
