@@ -96,8 +96,8 @@ function difference(num1, num2) {
 // Example, commented variables reflect hoisting behaviour
 
 function getTotal() {
-  // let total;
-  // var multiplier;
+  // let total; // if you were to console log this there will get a ReferenceError: Total is not defined
+  // var multiplier; // if you were to console log this there will get `undefined`
   let total = 0;// this will be hoisted here, at the top of the function
 
   for(var i = 0; i < 10; i++) {
