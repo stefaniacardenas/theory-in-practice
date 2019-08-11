@@ -85,9 +85,34 @@ function difference(num1, num2) {
 // Remember: if you declare a variable inside a function, that variable will be
 // hoisted at the top of the function, not at the top of the global scope!
 // This is because of function scoping in JavaScript
+// This is the scope for each key
 
+// | var scope | const/let scope|
+// |  global   |     global     |
+// |  function |    function    |
+// |           |    block       |
 
+// This means that `const` and `let` are hoisted at the top of the block scope while `var` variables are NOT!
+// Example, commented variables reflect hoisting behaviour
 
+function getTotal() {
+  // let total;
+  // var multiplier;
+  let total = 0;// this will be hoisted here, at the top of the function
+
+  for(var i = 0; i < 10; i++) {
+    //let valueToAdd;
+    let valueToAdd = i; // this will be hoisted here, at the top of the block
+    var multiplier = 2; // this will be hoisted at the top of the function!
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+
+console.log(getTotal());
+
+// ------------------------------------------------------------
 // Some notes about the JS interpreter:
 // When you execute your JavaScript code, the interpreter goes through the code twice.
 // The first run through the code is where it does a safety check
