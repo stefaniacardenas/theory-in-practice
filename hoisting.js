@@ -112,6 +112,43 @@ function getTotal() {
 
 console.log(getTotal());
 
+// More examples. Look at this code:
+
+var num = 50;
+
+function logNumber() {
+    // You would expect this to print 50? Wrong. It's undefined
+    console.log('### This example uses `var`')
+    console.log('Print an existing variable re-declared in function scope, will return', num);
+    // Because you are declaring var num inside this function scope, the interpreter
+    // would look for the variable hoisting inside this function's scope
+    var num = 100;
+    // if you delete this the console.log would print 50 because
+    // there is no hoisted variable inside of this function scope.
+    // So it would look for it in the parent's scope
+}
+
+logNumber();
+
+// Let's try with `let`
+let name = 'Stefania';
+
+function logName() {
+    try {
+      console.log('### This example uses `let`')
+      // trying to do this, will return an error
+      console.log('Trying to print an existing variable re-declared in function scope, will return', name);
+      // this is way in ES6 favours the use of `const` and `let` instead of `var`
+      // Nonetheless, it's important to know how `var` works comapred to the new ES6 syntax
+      let name = 'Lucy';
+    }
+    catch(err) {
+      // name is not defined
+      console.log(err.message)
+    }
+}
+logName();
+
 // ------------------------------------------------------------
 // Some notes about the JS interpreter:
 // When you execute your JavaScript code, the interpreter goes through the code twice.
