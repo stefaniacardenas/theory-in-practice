@@ -121,4 +121,4 @@ console.log(getTotal());
 // Then, it optimizes the code as best as it can to ensure better performance when it is executed.
 // This is also where hoisting occurs (more on this soon). This is also referred to as the compile run.
 // The second run is where it actually executes your code by going through it line by line, doing the assignments, calling the functions, and so on.
-// Source: https://www.codingame.com/playgrounds/7974/understanding-hoisting-in-javascript
+// Source re JS Interpreter is from: https://www.codingame.com/playgrounds/7974/understanding-hoisting-in-javascript
