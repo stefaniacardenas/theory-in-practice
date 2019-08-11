@@ -8,9 +8,7 @@
 
 x = 5
 // this will print 5 because the below function declaration will be moved at the top of the scope
-console.log(x)
-// Important: `const` and `let` variables are not hoisted. It means that they won't be declared at the top of the scope
-// Therefore hoising will only work with `var`
+console.log('I can print a variable before its declaration. X is', x)
 var x;
 
 
@@ -23,3 +21,54 @@ var x;
 // This is also where hoisting occurs (more on this soon). This is also referred to as the compile run.
 // The second run is where it actually executes your code by going through it line by line, doing the assignments, calling the functions, and so on.
 // Source: https://www.codingame.com/playgrounds/7974/understanding-hoisting-in-javascript
+
+// `const` and `let`
+// Important: `const` and `let` variables are not hoisted. It means that they won't be declared at the top of the scope
+// Therefore hoising will only work with `var`
+
+try {
+  y = 5
+  // this will throw an error
+  console.log(y)
+  let y;
+}
+catch(error) {
+  console.log('Hoisting does not work with `let` or `const`')
+  console.log('Error:', error.message)
+}
+
+// Hoisting and functions
+// Function hoisting works in the same way.
+// In JavaScript if you declare a function using `var` or `const`, that's called a function expression
+// Function expressions also get hoisted, it means that the function name
+// will be lifted to the top of the scope as a variable with no value
+
+try {
+  // At this point addNumbers is just a variable and it's undefined. It's not a function yet.
+  // So this will throw an error
+  console.log('Trying to run a function expression before its declaration', addNumbers(2,2))
+}
+catch(error) {
+  console.log(error.message)
+}
+
+try {
+  // Same here.
+  // This will throw an error
+  console.log('Trying to run a function expression before its declaration', getProduct(4,4))
+}
+catch(error) {
+  console.log(error.message)
+}
+
+// this will go to the top of the scope as:
+// var addNumbers;
+var addNumbers = function(num1, num2) {
+  return num1 + num2
+}
+
+// this will go to the top of the scope as:
+// const getProduct;
+const getProduct = (num1, num2) => {
+  return num1 * num2
+}
