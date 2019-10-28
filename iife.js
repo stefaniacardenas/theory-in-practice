@@ -18,3 +18,15 @@ console.log('on global scope my value is unchanged ',$)
 
 // More example from this jsbin here
 // https://jsbin.com/puqenak/1/edit?html,js,output
+
+// Run this code in the node console.
+// What would you expect x and y to return?
+(function() {
+  var x = y = 200;
+}
+)();
+
+// y returns 200 because it's a global variable, therefore it's available here
+console.log('y: ', y);
+// x is only available within the scope of the IIFE so it will return x is not defined
+console.log('x: ', x);
