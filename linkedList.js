@@ -1,11 +1,11 @@
 // Linked list
 
-//A Linked list is a list of elements called nodes that are connected together
+// A Linked list is a list of elements called nodes that are connected together
 // or linked together in a single file
 // There are two types of linked lists: a singly linked list and a double linked list
-// In a single linked list each node only has reference to the node after it or the next node
-// In a doubly linked list each node has a reference to the next node and the one before
-// the linked list itself as a whole only needs to know about two nodes to function correctly.
+// In a singly linked list each node only has reference to the node after it or the next node.
+// In a doubly linked list each node has a reference to the next node and the one before.
+// The linked list itself as a whole only needs to know about two nodes to function correctly:
 // The head node (first element) and the tail node (last element) and it keeps a reference to these nodes
 // by using two pointers called the head pointer and the tail pointer
 
@@ -19,18 +19,19 @@ function Node(value, next, prev) {
   this.next = next
   this.prev = prev
 }
-// let's create a method to add element at the beginning of the list
+// Let's create a method to add elements at the beginning of the list
 // The prototype object is simply an object that multiple other objects
 // can refer to to get any information or functionality that they need.
-// In our case, each of our constructor functions will have a prototype.
-// Are all their instances will be able to refer to it.
+// In our case, each of our constructor functions will have a prototype
+// and all their instances will be able to refer to it.
 LinkedList.prototype.addToHead = function(value) {
   // we need to create a new node with its value. This node will be the new head
-  // therefore the current head will be next. Pervious is always null because this is the first element
+  // therefore the current head will become the next node.
+  // The previous element will always be null because this is the first element
   const newNode = new Node(value, this.head, null)
   // if a node already exists
   if (this.head) {
-    // the new node becomes the previous of the current head.
+    // the new node will become the previous node in releation to the current head.
     // newNode becomes the first element
     this.head.prev = newNode
   }
@@ -43,16 +44,19 @@ LinkedList.prototype.addToHead = function(value) {
 }
 
 LinkedList.prototype.addToTail = function(value) {
+  // Same here but in this case the next value will always be null because the new node will be the last element
+  // The current tail will be come the prev in relation to the new node
   const newNode = new Node(value, null, this.tail)
   if (this.tail) {
-    // new node becomes the last element
+    // current tail must know who next node is. It must be aware that the new node it's its next
     this.tail.next = newNode
   }
   else {
-    // if there is no tail it mean no head is present either so this node becomes
+    // if there is no tail it means no head is present either so this node becomes
     // both the head and the tail
     this.head = newNode
   }
+  // the new node is assigned as the tail
   this.tail = newNode
 }
 
@@ -64,7 +68,7 @@ ll.addToHead(300) // this is the first element
 console.log(ll)
 console.log(ll.tail.prev.prev.prev) // this will log out the head 300
 
-// remove the head and return its value
+// Remove the head and return its value
 LinkedList.prototype.removeHead = function() {
   // if these is no head return null value
   if (!this.head) return null;
@@ -90,6 +94,7 @@ const removedHead = ll.removeHead()
 console.log('the value of the previous head was', removedHead )
 console.log('the head is now', ll.head )
 
+// Let's remove the tail
 LinkedList.prototype.removeTail = function() {
   if (!this.tail) return null;
   const tailVal = this.tail.value
@@ -99,9 +104,10 @@ LinkedList.prototype.removeTail = function() {
   }
   else {
     // if there is no tail at this point then there is no head either cause the elements are finished
-    // so let's reset to null
+    // so let's reset the head to null
     this.head = null
   }
+  // now return the value of the tail that we removed
   return tailVal
 }
 
