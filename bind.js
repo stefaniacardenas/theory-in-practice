@@ -38,3 +38,24 @@ console.log(newDistance()); // will return 10000
 // This is because arrow function share the this keyword with its parent scope.
 // In this case, that’s the global object.
 // So arrow functions are unusable for object methods!
+
+const account1 = {
+  name: 'Jen',
+  totalAmount: 5000,
+  deductAmount: function(amount) {
+    this.totalAmount -= amount;
+    return 'Amount in account: ' + this.totalAmount;
+  },
+};
+
+const account2 = {
+  name: 'James',
+  totalAmount: 8000,
+};
+
+const withdrawFromAccount = function(amount) {
+  return account1.deductAmount.bind(account2, amount);
+};
+
+console.log(withdrawFromAccount(500)()); // this will return 7500
+console.log(withdrawFromAccount(200)()); // this will return 7300

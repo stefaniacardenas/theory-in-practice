@@ -5,9 +5,20 @@ const list1 = [1, 2, 3, 4, 5]
 const list2 = list1
 list1.push(6, 7, 8)
 console.log('list2',list2) // returns [1, 2, 3, 4, 5, 6, 7, 8]
+// list1 and list2 are both referencing the same array
 
 // Objects and array are passed by reference is JS
-// list1 and list2 are both referencing the same array
+
+var person1 = {
+  name: 'Alex',
+  age: 30
+};
+
+var person2 = person1;
+
+person2.name = 'Kyle';
+
+console.log(person1); // the name in this object is updated to 'Kyle'
 
 // let's see a different example
 var list3 = [1, 2, 3, 4, 5]
@@ -38,3 +49,11 @@ const list9 = [1, 2, 3, 4, 5]
 const list10 = list9.concat([])
 list9.push(6, 7, 8)
 console.log('list10 uses concat', list10)
+
+// Passing data by value
+var string1 = 'Tampa';
+var string2 = string1;
+string1 = 'Venice';
+
+console.log(string2); // this will log out Tampa
+// Strings are passed by value, so string2 is set to Tampa

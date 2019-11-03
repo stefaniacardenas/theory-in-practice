@@ -25,6 +25,9 @@ student.getClasses = function() {
 // constructor function
 // Good for creating multiple objects of the same class quickly
 function Car(color, brand, year) {
+  // in this case the this does not refer to the function.
+  // It refers to the object that will be created.
+  // This is because this is a constructor function
   this.color = color;
   this.brand = brand;
   this.year = year;
@@ -43,3 +46,19 @@ console.log(jimsCar.getColor());
 // You can also do
 const hello = Object.create({})
 console.log('this is hello', hello)
+
+// Object keys can only be strings!
+// What happens if I try to use another object as a key?
+// The object will be coerced into a string. Look at this example
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+
+a[b] = 200;
+// a['[object Object]'] = 200
+
+a[c] = 400;
+// a['[object Object]'] = 400
+
+console.log(a[b]); //returns 400
+// console.log(a['[object Object]']);

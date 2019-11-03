@@ -149,6 +149,80 @@ function logName() {
 }
 logName();
 
+// Exercise. What would be printed out?
+var x = 10; // I'm assigning a global variable x with a value of 10
+
+function y() {
+    x = 100; // here I want to override x
+    return; // watch out there is a return
+    function x() {} // but hey,there is a function declaration here,
+    // so x is hoisted at the top of this function scope
+    // it's function scoped, then the value 100 is assigned.
+    // But this is all inside the function scope. Outside x is still 10
+}
+
+y();
+
+console.log(x); // this returns 10
+// One thing to keep in mind is that function declarations are hoisted differently than function expressions.
+// when a function is written as a function expression
+
+// Function expressions vs function declaration
+// Let's take this example where we have a function expression like
+var myFunctionExpression = function() {}
+
+// the variable myFunctionExpression is hoisted and initialized but it is not defined
+// so it receives the initial value of undefined.
+// This is what happens under the hood
+
+// var myFunctionExpression;
+// console.log(myFunctionExpression) // returns undefined
+// myFunctionExpression() // TypeError: myFunctionExpression is not a function
+// myFunctionExpression = function() {};
+
+
+// when function declarations are hoisted however, they are initialized and defined
+// and they can be invoked before they are actually declared in the body of the code.
+
+y(); // Outputs: "Definition hoisted!"
+
+// x(); // TypeError: undefined is not a function
+
+function y() {
+  console.log("Definition hoisted!");
+}
+
+var x = function () {
+  console.log("Definition not hoisted!");
+};
+
+
+
+// you can also see the difference if you log out the typeof in each case:
+
+var x = 10;
+
+function y() {
+    console.log(typeof x);  // undefined
+    x = 100;
+    console.log(typeof x);  // number
+    return;
+    var x = function() {}
+}
+
+// VS
+
+var x = 10;
+
+function y() {
+    console.log(typeof x);  // function
+    x = 100;
+    console.log(typeof x);  // number
+    return;
+    function x() {}
+}
+
+
 // ------------------------------------------------------------
 // Some notes about the JS interpreter:
 // When you execute your JavaScript code, the interpreter goes through the code twice.
