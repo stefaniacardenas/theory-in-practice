@@ -59,7 +59,7 @@ LinkedList.prototype.addToTail = function(value) {
   // the new node is assigned as the tail
   this.tail = newNode
 }
-
+console.log("//////////// Add to head and add to tail ////////////////")
 const ll = new LinkedList()
 ll.addToHead(100)
 ll.addToTail(1000) // this is the last element
@@ -88,6 +88,7 @@ LinkedList.prototype.removeHead = function() {
   // now let's return the value of the head that was removed from the LinkedList
   return val
 }
+console.log("//////////// Remove head and remove tail ////////////////")
 console.log('this is the current head', ll.head )
 console.log('now we will remove it ')
 const removedHead = ll.removeHead()
@@ -121,3 +122,50 @@ console.log('value of removed tail', removedTail)
 console.log('the new tail is', newLL.tail)
 
 // Search through a linked list
+console.log("//////////// Search through linked list ////////////////")
+LinkedList.prototype.search = function(searchValue) {
+  // take in the search value and check if that data resides in the linked list
+  // if it does not exist, this function will return `null`
+  // if it does exist, this function will return the value
+  let currentNode = this.head
+  // while(condition) runs till the condition in the parenthesis becomes true
+  // this will run until currentNode exist
+  // At the end of the list currentNode will be false and the while loop will stop
+  while(currentNode) {
+    if (currentNode.value === searchValue) return currentNode.value;
+    currentNode = currentNode.next
+  }
+  return null
+}
+
+const anotherLL = new LinkedList()
+anotherLL.addToHead(1)
+anotherLL.addToHead(2)
+anotherLL.addToTail(3)
+anotherLL.addToTail(4)
+anotherLL.addToTail(3)
+const searchedValue = anotherLL.search(3)
+console.log(searchedValue)
+
+// Find the indexes of a node value
+LinkedList.prototype.indexOf = function (value) {
+  let currentNode = this.head
+  let indexes = []
+  let index = 0
+  // while(condition) runs till the condition in the parenthesis becomes true
+  // this will run until currentNode exist
+  // At the end of the list currentNode will be false and the while loop will stop
+  // meanwhile we increase the current index by one at each iteration and
+  // store the indexes of the node values that match our search
+  while(currentNode) {
+    if (currentNode.value === value) {
+      indexes.push(index)
+    }
+    currentNode = currentNode.next
+    index++
+  }
+  return indexes
+};
+
+const indexesInLinkedList = anotherLL.indexOf(10)
+console.log('Indexes of nodes with value 3', indexesInLinkedList)
