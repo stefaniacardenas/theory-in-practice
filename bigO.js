@@ -18,7 +18,7 @@ log(new Array(50))
 // time is the x axis, while input size is the y axis.
 // if y grows time will stay the same
 
-// The function below has a `linear runtime`
+// The function below has a `Linear runtime`
 // In bigO Notation this is written as: "O (n)" (pronunced Oh of N)
 // As the input size increases the runtime will increase too
 // if there are 50 elements in the array we have to perform 50 operations
@@ -54,6 +54,22 @@ addAndLog(['A', 'B', 'C', 'D', 'E']);  // 25 pairs logged out
 // In bigO Notation this is written as: "O (log N)" (pronunced Oh of log N)
 // This is very performant. An example of very performant algorithm is a binary search
 
-function binarySearch(array, value) {
+function binarySearch(array, valueToSearch) {
+  var low = 0;
+  var high = array.length - 1;
+  var mid;
+  var element;
 
+  while (low <= high) {
+    mid = Math.floor((low + high) / 2, 10);
+    midElement = array[mid];
+    if (midElement < valueToSearch) {
+      low = mid + 1;
+    } else if (midElement > valueToSearch) {
+      high = mid - 1;
+    } else {
+      return mid;
+    }
+  }
+  return -1;
 }

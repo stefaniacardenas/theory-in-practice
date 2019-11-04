@@ -169,3 +169,29 @@ LinkedList.prototype.indexOf = function (value) {
 
 const indexesInLinkedList = anotherLL.indexOf(10)
 console.log('Indexes of nodes with value 3', indexesInLinkedList)
+
+
+// Performance
+// Linked Lists have a constant runtime "O (1)" for adding or removing nodes from the head and tail
+// This is because we have the head and tail pointers so we never have to iterate
+// over the whole list to find head and tail.
+// Searching a linked list can be done in a linear runtime "O (n)" because
+// we might still need to iterate over the whole linked list to find an element.
+// So as our linked list grows in size, the time that it takes to run our search function
+// will grow proportionally
+// All of that is still an acceptable and efficient time complexity.
+// So linked lists are rather performant in nature.
+
+// Practical uses
+// - Online gaming
+// - Poker, board game
+
+// Important!
+// Linked list are a good data structure to use in lower level languages
+// that actually deal with memory management (which you won't actually have to deal with in Javascript).
+
+// Linked lists are ideal in languages that deal with physical memory space on your hard drive
+// because they allow you to break up a lot of data into little pieces that can
+// be spread across different areas and they don't necessarily have to be stored together.
+// You can store this data in different places because each nodes holds the reference
+// to its next and previous node
