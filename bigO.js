@@ -44,11 +44,11 @@ function logAndAdd(array) {
 }
 
 console.log('should log 9 pairs')
-addAndLog(['A', 'B', 'C']);  // 9 pairs logged out
+logAndAdd(['A', 'B', 'C']);  // 9 pairs logged out
 console.log('should log 16 pairs')
-addAndLog(['A', 'B', 'C', 'D']);  // 16 pairs logged out
+logAndAdd(['A', 'B', 'C', 'D']);  // 16 pairs logged out
 console.log('should log 25 pairs')
-addAndLog(['A', 'B', 'C', 'D', 'E']);  // 25 pairs logged out
+logAndAdd(['A', 'B', 'C', 'D', 'E']);  // 25 pairs logged out
 
 // The function below has an `logarithmic runtime`
 // In bigO Notation this is written as: "O (log N)" (pronunced Oh of log N)
