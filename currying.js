@@ -46,3 +46,29 @@ function quadrupleAdd(num1) {
 }
 
 quadrupleAdd(10)(20)(30, 40) // returns 100
+
+
+function getProduct(num1) {
+  return function(num2) {
+    const product = num1 * num2
+    console.log('getProduct result', product)
+    return product
+  }
+}
+
+getProduct(5)(5);
+
+
+// function getTravelTime(distance, speed) {
+//   return distance / speed;
+// }
+
+function getTravelTime(distance) {
+  return function(speed) {
+    return distance / speed;
+  };
+}
+
+const travelTimeBosNyc = getTravelTime(400);
+const travelTimeMiamiAtlanta = getTravelTime(600);
+console.log(travelTimeBosNyc(100));
