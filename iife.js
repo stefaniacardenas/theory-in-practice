@@ -29,4 +29,9 @@ console.log('on global scope my value is unchanged ',$)
 // y returns 200 because it's a global variable, therefore it's available here
 console.log('y: ', y);
 // x is only available within the scope of the IIFE so it will return x is not defined
-console.log('x: ', x);
+try {
+  console.log('x: ', x);
+}
+catch(err) {
+  console.log(err)
+}
