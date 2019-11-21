@@ -38,3 +38,29 @@ var myHair = {
 };
 
 myHair.logColor();
+
+// Some definitions:
+// Scope defines the lifetime and visibility of a variable.
+// Lexical scope is just a fancy name for compile-time scope
+// The scope of a variable is defined by its location in the source code.
+// Location means the place where you define your variable
+// Lexical scope is the ability of the inner function to access the outer scope in which it is defined.
+// Remember hoisting
+
+// Global scope
+// Variables defined outside any function, block, or module scope have global scope.
+// Variables in global scope can be accessed from everywhere in the application.
+
+// Function scope
+// Function scope means that parameters and variables defined in a function
+// are visible everywhere within the function, but are not visible outside of the function.
+// Nested functions have access to variables in their outer scope
+
+// Block Scope
+// Block scope is defined with curly braces. It is separated by { and }.
+// They can only be accessed in the block in which they are defined.
+
+// Scope chain
+// Every scope has a link to the parent scope.
+// When a variable is used, JavaScript looks down the scope chain until it either 
+// finds the requested variable or until it reaches the global scope, which is the end of the scope chain.
