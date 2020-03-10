@@ -1,0 +1,14 @@
+{
+  "name": "theory-in-practice",
+  "version": "1.0.0",
+  "description": "A series of notes and exercises inspired by Udemy courses such as AlgoCast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "Stefania F. Cardenas",
+  "license": "ISC"
+}
