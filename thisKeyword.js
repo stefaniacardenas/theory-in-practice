@@ -1,4 +1,7 @@
 // What is `this` in JavaScript?
+// `this` is a keyword that in JavaScript returns a preperty of the execution context - aka lexical scope (global, function or eval).
+// Think of lexical scope as location in memory allocated for all local variables to that scope.
+// In non–strict mode, is always a reference to an object and in strict mode can be any value.
 // `this` refers to whatever object it is directly inside of
 //
 
@@ -62,5 +65,5 @@ myHair.logColor();
 
 // Scope chain
 // Every scope has a link to the parent scope.
-// When a variable is used, JavaScript looks down the scope chain until it either 
+// When a variable is used, JavaScript looks down the scope chain until it either
 // finds the requested variable or until it reaches the global scope, which is the end of the scope chain.
