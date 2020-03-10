@@ -18,7 +18,6 @@ function palindromeWithArrayMethods(str) {
 function palindromeHalfIteration(str) {
   // this is by far the fastest solution
    for (let i = 0; i < str.length / 2; i++) {
-      console.log('i',i, 'str[i]', str[i], 'str[str.length - i - 1]', str[str.length - i - 1])
        if (str[i] !== str[str.length - i - 1]) {
            return false;
        }

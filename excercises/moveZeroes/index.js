@@ -1,3 +1,4 @@
+// Apporach 1
 var moveZeroes = function(nums) {
     let amountOfZeroes = 0
 
@@ -13,6 +14,8 @@ var moveZeroes = function(nums) {
     return nums
 }
 
+
+// approach 2 
 const moveZerosWithTwoPointers = (nums) => {
   let zeroCount = 0
   for (let i = 0; i < nums.length; i++) {

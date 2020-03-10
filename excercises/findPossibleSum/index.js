@@ -1,8 +1,8 @@
-const arr1 = [1,2,3,9] // false
-const arr2 = [1,2,4,4] // true
-
-const sum1 = 8
-const sum2 = 8
+// const arr1 = [1,2,3,9] // false
+// const arr2 = [1,2,4,4] // true
+//
+// const sum1 = 8
+// const sum2 = 8
 
 // [integer]
 // output = boolean
