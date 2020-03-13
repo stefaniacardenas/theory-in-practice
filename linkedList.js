@@ -249,7 +249,7 @@ class SinglyLinkedList {
         }
         if (counter === index) {
           const newNode = new SinglyNode(value)
-          if (currentNode.next === null) {
+          if (currentNode === null) {
             newNode.next = null
             this.tail = newNode
           }
@@ -267,6 +267,16 @@ class SinglyLinkedList {
       return this
     }
   }
+
+  printList() {
+    const nodesArray = []
+    let currentNode = this.head
+    while(currentNode !== null) {
+      nodesArray.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    console.log('current nodes values', nodesArray)
+  }
 }
 
 const mySinglyLinkedList = new SinglyLinkedList(10)
@@ -276,6 +286,6 @@ mySinglyLinkedList.append(16)
 console.log(mySinglyLinkedList)
 mySinglyLinkedList.prepend(7)
 console.log(mySinglyLinkedList)
-// 7 - 10 - 900 - 5 - 16
-mySinglyLinkedList.insert(2, 900)
+mySinglyLinkedList.insert(4, 900)
 console.log(mySinglyLinkedList.head.next.next)
+mySinglyLinkedList.printList()

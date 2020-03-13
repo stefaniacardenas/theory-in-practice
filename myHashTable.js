@@ -45,7 +45,7 @@ class HashTable {
   keys() {
     const keys = []
     for (let slot of this.data ) {
-      if (slot.length) {
+      if (slot && slot.length) {
         keys.push(slot[0])
       }
     }
