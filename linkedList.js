@@ -195,3 +195,87 @@ console.log('Indexes of nodes with value 3', indexesInLinkedList)
 // be spread across different areas and they don't necessarily have to be stored together.
 // You can store this data in different places because each nodes holds the reference
 // to its next and previous node
+
+
+// Let's create a singly LinkedList
+
+class SinglyNode {
+  constructor(value) {
+    this.value = value
+    this.next = null
+  }
+}
+
+class SinglyLinkedList {
+  constructor(value) {
+    // this will be the head
+    this.head = {
+      value,
+      next: null
+    }
+    this.tail = this.head
+    this.length = 1
+  }
+
+  append(value) {
+    const newNode = new SinglyNode(value)
+    this.tail.next = newNode
+    this.tail = newNode
+    this.length++
+    return this
+  }
+
+  prepend(value) {
+    const newNode = new SinglyNode(value)
+    newNode.next = this.head
+    this.head = newNode
+    this.length++
+    return this
+  }
+
+  insert(index, value) {
+    let counter = 0
+    let currentNode = this.head
+    let prevNode = null
+    console.log('counter before', counter)
+    if (index === 0) {
+      return this.prepend(value)
+    }
+    else {
+      while(counter <= index) {
+        console.log('currentNode',currentNode)
+        if (counter === index - 1) {
+          prevNode = currentNode
+        }
+        if (counter === index) {
+          const newNode = new SinglyNode(value)
+          if (currentNode.next === null) {
+            newNode.next = null
+            this.tail = newNode
+          }
+          else {
+            newNode.next = currentNode
+          }
+          prevNode.next = newNode
+          this.length++
+        }
+        else {
+          currentNode = currentNode.next
+        }
+        counter++
+      }
+      return this
+    }
+  }
+}
+
+const mySinglyLinkedList = new SinglyLinkedList(10)
+mySinglyLinkedList.append(5)
+mySinglyLinkedList.append(16)
+
+console.log(mySinglyLinkedList)
+mySinglyLinkedList.prepend(7)
+console.log(mySinglyLinkedList)
+// 7 - 10 - 900 - 5 - 16
+mySinglyLinkedList.insert(2, 900)
+console.log(mySinglyLinkedList.head.next.next)
