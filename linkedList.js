@@ -240,21 +240,22 @@ class SinglyLinkedList {
     if (index === 0) {
       return this.prepend(value)
     }
+    const newNode = new SinglyNode(value)
+    let prevNode = this.traverseList(index - 1)
+    newNode.next = prevNode.next
+    prevNode.next = newNode
+    this.length++
+    return this
+  }
 
+  traverseList(index) {
     let counter = 0
     let currentNode = this.head
-    while(counter <= index) {
-      if (counter === index - 1) {
-        const newNode = new SinglyNode(value)
-        newNode.next = currentNode.next
-        currentNode.next = newNode
-        this.length++
-        return
-      }
+    while(counter !== index) {
       currentNode = currentNode.next
       counter++
     }
-    return this
+    return currentNode
   }
 
   printList() {
