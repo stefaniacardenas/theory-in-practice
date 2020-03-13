@@ -234,38 +234,27 @@ class SinglyLinkedList {
   }
 
   insert(index, value) {
-    let counter = 0
-    let currentNode = this.head
-    let prevNode = null
-    console.log('counter before', counter)
+    if (index >= this.length) {
+      return this.append(value)
+    }
     if (index === 0) {
       return this.prepend(value)
     }
-    else {
-      while(counter <= index) {
-        console.log('currentNode',currentNode)
-        if (counter === index - 1) {
-          prevNode = currentNode
-        }
-        if (counter === index) {
-          const newNode = new SinglyNode(value)
-          if (currentNode === null) {
-            newNode.next = null
-            this.tail = newNode
-          }
-          else {
-            newNode.next = currentNode
-          }
-          prevNode.next = newNode
-          this.length++
-        }
-        else {
-          currentNode = currentNode.next
-        }
-        counter++
+
+    let counter = 0
+    let currentNode = this.head
+    while(counter <= index) {
+      if (counter === index - 1) {
+        const newNode = new SinglyNode(value)
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+        this.length++
+        return
       }
-      return this
+      currentNode = currentNode.next
+      counter++
     }
+    return this
   }
 
   printList() {
@@ -286,6 +275,6 @@ mySinglyLinkedList.append(16)
 console.log(mySinglyLinkedList)
 mySinglyLinkedList.prepend(7)
 console.log(mySinglyLinkedList)
-mySinglyLinkedList.insert(4, 900)
+mySinglyLinkedList.insert(2, 900)
 console.log(mySinglyLinkedList.head.next.next)
 mySinglyLinkedList.printList()
