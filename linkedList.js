@@ -234,6 +234,7 @@ class SinglyLinkedList {
   }
 
   insert(index, value) {
+    // insert is also O(n)
     if (index >= this.length) {
       return this.append(value)
     }
@@ -248,7 +249,32 @@ class SinglyLinkedList {
     return this
   }
 
+  remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      this.length--
+      return this
+    }
+
+    // if the index is greater than the length of the array
+    // we assume that we want to remove the last element
+    // otherwise we want to remove the index requested
+    let i = index >= this.length ? this.length - 1 : index
+     // this is the nodes that leads to the node we want to remove
+    let prevNode = this.traverseList(i - 1)
+    if (index >= this.length) {
+      this.tail = prevNode
+      this.tail.next = null
+      this.length--
+      return this
+    }
+    prevNode.next = prevNode.next.next
+    this.length--
+    return this
+  }
+
   traverseList(index) {
+    // this is our lookup function O(n)
     let counter = 0
     let currentNode = this.head
     while(counter !== index) {
@@ -271,11 +297,126 @@ class SinglyLinkedList {
 
 const mySinglyLinkedList = new SinglyLinkedList(10)
 mySinglyLinkedList.append(5)
-mySinglyLinkedList.append(16)
-
-console.log(mySinglyLinkedList)
-mySinglyLinkedList.prepend(7)
-console.log(mySinglyLinkedList)
-mySinglyLinkedList.insert(2, 900)
-console.log(mySinglyLinkedList.head.next.next)
 mySinglyLinkedList.printList()
+mySinglyLinkedList.append(16)
+mySinglyLinkedList.printList()
+mySinglyLinkedList.prepend(7)
+mySinglyLinkedList.printList()
+mySinglyLinkedList.insert(2, 900)
+mySinglyLinkedList.printList()
+mySinglyLinkedList.remove(6)
+mySinglyLinkedList.printList()
+
+
+class DoublyNode {
+  constructor(value) {
+    this.value = value
+    this.next = null
+    this.prev = null
+  }
+}
+
+class DoublyLinkedList {
+  constructor(value) {
+    this.head = new DoublyNode(value)
+    this.tail = this.head
+    this.length = 1
+  }
+
+  append(value) {
+    const newNode = new DoublyNode(value)
+    newNode.prev = this.tail
+    this.tail.next = newNode
+    this.tail = newNode
+    this.length++
+    return this
+  }
+
+  prepend(value) {
+    const newNode = new DoublyNode(value)
+    newNode.next = this.head
+    this.head.prev = newNode
+    this.head = newNode
+    this.length++
+    return this
+  }
+
+  insert(index, value) {
+    let newNode = new DoublyNode(value)
+    if (index >= this.length) {
+      return this.append(value)
+    }
+    if (index <= 0) {
+      return this.prepend(value)
+    }
+    const leader = this.traverse(index - 1)
+    const follower = leader.next
+    leader.next = newNode
+    newNode.prev = leader
+    newNode.next = follower
+    follower.prev = newNode
+    this.length++
+    return this
+  }
+
+  remove(index, value) {
+    let i = index >= this.length ? this.length - 1 : index
+    if (i <= 0) {
+      this.head = this.head.next
+      this.head.prev = null
+      this.length--
+      return this
+    }
+
+    if (i >= this.length - 1) {
+      this.tail = this.tail.prev
+      this.tail.next = null
+      this.length--
+      return this
+    }
+
+    let lead = this.traverse(i - 1)
+    lead.next = lead.next.next
+    lead.next.prev = lead
+    this.length--
+    return this
+  }
+
+  traverse(index) {
+    let counter = 0
+    let currentNode = this.head
+    while (counter !== index) {
+      currentNode = currentNode.next
+      counter++
+    }
+    return currentNode
+  }
+
+  printList() {
+    const nodesArray = []
+    let currentNode = this.head
+    while(currentNode !== null) {
+      nodesArray.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    console.log("current doubly list", nodesArray)
+  }
+}
+
+const myDoublyLinkedList = new DoublyLinkedList(10)
+console.log('Newly created list with', myDoublyLinkedList)
+console.log('Append 5')
+myDoublyLinkedList.append(5)
+myDoublyLinkedList.printList()
+console.log('Append 16')
+myDoublyLinkedList.append(16)
+myDoublyLinkedList.printList()
+console.log('Put 7 at the beginning')
+myDoublyLinkedList.prepend(7)
+myDoublyLinkedList.printList()
+console.log('Insert 900 at position 2')
+myDoublyLinkedList.insert(2, 900)
+myDoublyLinkedList.printList()
+console.log('Remove item at position 4')
+myDoublyLinkedList.remove(4)
+myDoublyLinkedList.printList()
