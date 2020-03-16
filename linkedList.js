@@ -273,6 +273,24 @@ class SinglyLinkedList {
     return this
   }
 
+  reverse() {
+    if (!this.head.next) {
+      return this
+    }
+    let first = this.head
+    this.tail = this.head
+    let second = first.next
+    while(second !== null) {
+      let temp = second.next
+      second.next = first
+      first = second
+      second = temp
+    }
+    this.head.next = null
+    this.head = first
+    return this
+  }
+
   traverseList(index) {
     // this is our lookup function O(n)
     let counter = 0
@@ -305,6 +323,8 @@ mySinglyLinkedList.printList()
 mySinglyLinkedList.insert(2, 900)
 mySinglyLinkedList.printList()
 mySinglyLinkedList.remove(6)
+mySinglyLinkedList.printList()
+mySinglyLinkedList.reverse()
 mySinglyLinkedList.printList()
 
 
