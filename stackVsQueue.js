@@ -1,3 +1,14 @@
+// Stack And Queues
+
+// Stack and Queues are linear data structures, which allows you to traverse element sequentially (one by one), 
+// in which only one element can be directly reached.
+// They are very similar, they can be implemented in similar ways,
+// the only main difference is how items get removed.
+// Unlike an array, in stacks and queues there is no random access operations
+// You only use stacks and queues if you are going to use push(), pick(), pop() 
+// all of which deal with the element at the end of beginning of the data structure.
+
+
 // What is a program?
 
 // A program needs to do some simple things:
