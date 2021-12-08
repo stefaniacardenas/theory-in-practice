@@ -17,9 +17,37 @@ const fibonacci = (num) => {
   if (num <= 1) {
     return 1
   }
-  const solution = fibonacci(num - 1) + fibonacci(num - 2)
-  console.log(solution)
-  return solution
+  return fibonacci(num - 1) + fibonacci(num - 2)
 }
 
 console.log(fibonacci(8))
+
+
+function diagonalDifference(arr) {
+  const matrixLength = arr.length
+  let sumDiagonal1 = 0
+  let sumDiagonal2 = 0
+  for(let i = 0; i < matrixLength; i++){
+    sumDiagonal1 += arr[i][i]
+    sumDiagonal2 += arr[i][matrixLength - i - 1]
+  }
+  console.log(sumDiagonal1)
+  console.log(sumDiagonal2)
+  return Math.abs(sumDiagonal1 - sumDiagonal2)
+}
+
+function superDigit(n, k) {
+  console.log(n, k)
+  const arr = n.repeat(k).split("")
+  console.log(arr)
+  const sum = arr.reduce((acc, num) => Number(acc) + Number(num)).toString()
+  console.log(sum)
+  if (sum.length === 1) {
+      console.log('thats it!')
+      return sum
+  }
+  else {
+      console.log('about to call superDigit again')
+      return superDigit(sum, 1)
+  }
+}
