@@ -6,7 +6,7 @@ function BST(value) {
   this.right = null
 }
 
-BST.prototype.insert= function(value) {
+BST.prototype.insert = function(value) {
   if (value <= this.value) {
     this.left ? this.left.insert(value) : this.left = new BST(value)
   }
